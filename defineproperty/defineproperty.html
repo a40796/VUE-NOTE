@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defineproperty</title>
+</head>
+<body>
+    <script>
+        let hei = 173;
+        let person = {
+            name:'albert',
+            age:28
+        }
+        Object.defineProperty(person,'height',{
+            // enumerable:true, //default:false 控制屬性是否可以跑回圈
+            // writable:true, // default:false 控制屬性是否可以被修改 
+            // configurable:true // default:false 控制屬性是否可以被刪除
+
+            // person.height被讀取時 getter functon 會被呼叫 return的值就會是height的值
+            get(){
+                console.log('be readed')
+                return hei
+            },
+            //person.height被修改時 setter functon 會被呼叫 且會收到修改的值
+            set(value){
+                hei = value;
+                console.log(`有人修改了height屬性且值是${value}`)
+            }
+        })
+    </script>
+</body>
+</html>

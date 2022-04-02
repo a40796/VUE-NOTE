@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj1 = {x:'albert'}
+        let obj2 = {y:'john'}
+        Object.defineProperty(obj2,'x',{
+            get(){
+                return obj1.x
+            },
+            set(value){
+                obj1.x = value;
+            }
+        })
+    </script>
+</body>
+</html>
