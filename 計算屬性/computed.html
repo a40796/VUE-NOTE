@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <span>firstname</span>
+        <input type="text" v-model="firstName">
+        <br>
+        <br>
+        <span>lastname</span>
+        <input type="text" v-model="lastName" >
+        <br>
+        <br>
+        <span>fullName:{{fullName}}</span>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            data(){
+                return{
+                    firstName:'albert',
+                    lastName:'Hunag'
+                }
+            },
+            computed:{
+                fullName:{
+                    //第一次讀到fullName會呼叫getter 以及 被計算的屬性被改變時 也會呼叫getter
+                    get(){
+                        console.log(`getter is be called`)
+                        return `${this.firstName} - ${this.lastName}`
+                    },
+                    //當fullName被修改時 setter會被呼叫
+                    set(value){
+                        console.log(`setter is be called`,value)
+                        let [a,b] = value.split(' ');
+                        this.firstName = a;
+                        this.lastName = b;
+                    }
+                }
+            }
+        })
+        vm.$mount('#root')
+    </script>
+</body>
+</html>

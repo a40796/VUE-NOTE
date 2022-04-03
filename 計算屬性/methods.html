@@ -8,20 +8,28 @@
 </head>
 <body>
     <div id="root">
-        {{name}}:
-        <input type="text" placeholder="input your value" @keyup｀.enter="showInfo">
+        <span>firstname</span>
+        <input type="text" v-model="firstName">
+        <br>
+        <br>
+        <span>lastname</span>
+        <input type="text" v-model="lastName" >
+        <br>
+        <span>fullName:{{showInfo()}}</span>
     </div>
     <script>
         Vue.config.productionTip = false;
         const vm = new Vue({
             data(){
                 return{
-                    name:'Number'
+                    firstName:'albert',
+                    lastName:'Hunag'
                 }
             },
             methods: {
                 showInfo(e){
-                    console.log(e.key,e.target.value)
+                    console.log(`@@@@@`)
+                   return `${this.firstName}  ${this.lastName}`
                 }
             },
         })
