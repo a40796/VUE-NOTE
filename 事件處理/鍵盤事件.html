@@ -8,20 +8,20 @@
 </head>
 <body>
     <div id="root">
-        <span>welcome to {{name}}</span>
-        <button @click="welcome('brain',$event)">click me</button>
+        {{name}}:
+        <input type="text" placeholder="input your value" @keyup.enter="showInfo">
     </div>
     <script>
         Vue.config.productionTip = false;
         const vm = new Vue({
             data(){
                 return{
-                    name:'ABC school'
+                    name:'Number'
                 }
             },
             methods: {
-                welcome(name,event){
-                    console.log(this === vm)
+                showInfo(e){
+                    console.log(e.key,e.target.value)
                 }
             },
         })
