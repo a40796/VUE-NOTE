@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <span>現在的天氣是{{theWeather}}</span>
+        <br>
+        <br>
+        <button @click="weather = !weather">點擊切換天氣</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            data(){
+                return{
+                    weather:true
+                }
+            },
+        //簡寫
+            computed:{
+                theWeather(){
+                    return this.weather ? 'good' : 'bad'
+                }
+            },
+            // 寫法ㄧ
+            watch:{
+                weather:{
+                    immediate:true,  // 初始時會對handler呼叫一次
+                    handler(newValue,oldValue){
+                        console.log(`weather is be changed , ${newValue} ${oldValue}`)
+                    }
+                }
+            }
+        })
+        vm.$mount('#root')
+        //寫法二
+        vm.$watch('theWeather',{
+            immediate:true,  // 初始時會對handler呼叫一次
+            handler(newValue,oldValue){
+                console.log(`theWeather is be changed , ${newValue} ${oldValue}`)
+            }
+        })
+    </script>
+</body>
+</html>
