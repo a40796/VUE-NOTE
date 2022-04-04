@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        {{numbers.a}}
+        <br>
+        {{numbers.b}}
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            data(){
+                return{
+                    weather:true,
+                    numbers:{
+                        a:1,
+                        b:2
+                    }
+                }
+            },
+            watch:{
+                numbers:{
+                    deep:true, // 深度監視 numbers底下的 a or b被改變 vue會偵測到
+                    handler(newValue,oldValue){
+                        console.log(`numbers被改變了`)
+                    }
+                }
+            }
+        })
+        vm.$mount('#root')
+    </script>
+</body>
+</html>
