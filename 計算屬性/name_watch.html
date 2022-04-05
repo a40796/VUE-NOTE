@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <span>firstname</span>
+        <input type="text" v-model="firstName">
+        <br>
+        <br>
+        <span>lastname</span>
+        <input type="text" v-model="lastName" >
+        <br>
+        <br>
+        <span>fullName:{{fullName}}</span>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            data(){
+                return{
+                    firstName:'albert',
+                    lastName:'Hunag',
+                    fullName:'albert huang'
+                }
+            },
+        //簡寫
+            computed:{
+                
+            },
+            watch:{
+                firstName(newValue){
+                    setTimeout(()=>{
+                        this.fullName = `${newValue}  ${this.lastName}`;
+                    },1000)
+                },
+                lastName(newValue){
+                    this.fullName = `${this.firstName} ${newValue}`;
+                },
+            }
+        })
+        vm.$mount('#root')
+    </script>
+</body>
+</html>

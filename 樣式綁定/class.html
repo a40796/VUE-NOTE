@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        .basic{
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .happy{
+            background-color: brown;
+        }
+        .sad{
+            background-color: cadetblue;
+        }
+        .angry{
+            background-color: chocolate;
+        }
+        .font_red{
+            color: red;
+        }
+        .font_bold{
+            font-weight: 700;
+        }
+        .font_size{
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="basic" :class="mood">{{mood}}</div>
+        <button @click="changeMood">click me</button>
+        <br>
+        <br>
+        <div class="basic" :class="classArr">{{mood}}</div>
+        <button @click="changeFont">click me</button>
+        <br>
+        <br>
+        <div class="basic" :class="classObj">{{mood}}</div>
+        <button @click="changeFont">click me</button>
+        <br>
+        <br>
+        <div class="basic" :style="styleObj">{{mood}}</div>
+        <button @click="changeFont">click me</button>
+        <br>
+        <br>
+        <div class="basic" :style="styleArr">{{mood}}</div>
+        <button @click="changeFont">click me</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data() {
+                return {
+                    mood:'happy',
+                    classArr:['font_red','font_bold','font_size'],
+                    classObj:{
+                        font_red:true,
+                        font_bold:false
+                    },
+                    styleObj:{
+                        fontSize:'20px',
+                        color:'red'
+                    },
+                    styleArr:[
+                        {
+                            fontSize:'20px',
+                            color:'red'
+                        },
+                        {
+                            backgroundColor:'#0080003b'
+                        }
+                    ]
+                }
+            },
+            methods: {
+                changeMood(){
+                    let arr = ['happy','sad','angry'];
+                    let index = Math.floor(Math.random() * 3);
+                    this.mood = arr[index];
+                },
+                changeFont(){
+                    this.classArr.shift()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

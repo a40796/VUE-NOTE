@@ -29,22 +29,34 @@
             },
             // 寫法ㄧ
             watch:{
-                weather:{
-                    immediate:true,  // 初始時會對handler呼叫一次
-                    handler(newValue,oldValue){
-                        console.log(`weather is be changed , ${newValue} ${oldValue}`)
-                    }
+                // 1. 正常寫法
+                // weather:{
+                //     immediate:true,  // 初始時會對handler呼叫一次
+                //     handler(newValue,oldValue){
+                //         console.log(`weather is be changed , ${newValue} ${oldValue}`)
+                //     }
+                // }
+
+                //2. 簡寫模式
+                weather(newValue,oldValue){
+                    console.log(`weather is be changed , ${newValue} ${oldValue}`)
                 }
             }
         })
         vm.$mount('#root')
         //寫法二
-        vm.$watch('theWeather',{
-            immediate:true,  // 初始時會對handler呼叫一次
-            handler(newValue,oldValue){
-                console.log(`theWeather is be changed , ${newValue} ${oldValue}`)
-            }
+        // 1. 正常寫法
+        // vm.$watch('theWeather',{
+        //     immediate:true,  // 初始時會對handler呼叫一次
+        //     handler(newValue,oldValue){
+        //         console.log(`theWeather is be changed , ${newValue} ${oldValue}`)
+        //     }
+        // })
+        //2. 簡寫模式
+        vm.$watch('theWeather',function(newValue,oldValue){
+            console.log(`theWeather is be changed , ${newValue} ${oldValue}`)
         })
+        
     </script>
 </body>
 </html>
