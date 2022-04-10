@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <span>emplyees</span>
+        <br>
+        <input type="text" placeholder="input the value" v-model="inputVal">
+        <button @click="type = 2">up</button>
+        <button @click="type = 1">down</button>
+        <button @click="type = 0">same</button>
+        <ul>
+            <li v-for="employee in employeeFil" :key="employee.id">{{employee.name}} - {{employee.age}}</li>
+        </ul>
+    </div>
+    <script>
+        const vm =  new Vue({
+            el:'#root',
+            data:{
+                type:0,
+                inputVal:'',
+                employees:[
+                    {
+                        id:1,
+                        name:'albert',
+                        age:29
+                    },
+                    {
+                        id:2,
+                        name:'brain',
+                        age:39
+                    },
+                    {
+                        id:3,
+                        name:'ken',
+                        age:19
+                    },
+                    {
+                        id:4,
+                        name:'danial',
+                        age:39
+                    },
+                    {
+                        id:5,
+                        name:'joanna',
+                        age:44
+                    },
+                ],
+            },
+            computed:{
+                employeeFil(){
+                    let arr = this.employees.filter((p)=>{
+                            return p.name.indexOf(this.inputVal) !== -1;
+                    })
+                    if(this.type){
+                        arr.sort((a,b)=>{
+                            return this.type === 1 ? b.age - a.age : a.age - b.age
+                        })
+                    }
+                    return arr
+                }
+            }
+        })
+    </script>
+</body>
+</html>
