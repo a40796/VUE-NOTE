@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- array -->
+        <ul>
+            <li v-for="(employee,index) in employees" :key="index">{{employee.name}} - {{employee.age}}</li>
+        </ul>
+        <!-- obj -->
+        <ul>
+            <li v-for="(car,index) in cars" :key="index">{{car}}</li>
+        </ul>
+        <!-- string -->
+        <ul>
+            <li v-for="(i,index) in name" :key="index">{{i}}</li>
+        </ul>
+        <!-- num -->
+        <ul>
+            <li v-for="(n,index) in num" :key="index">{{n}}</li>
+        </ul>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                employees:[
+                    {name:'albert',age:28,sex:'men'},
+                    {name:'brain',age:30,sex:'men'},
+                    {name:'joaana',age:18,sex:'women'},
+                ],
+                cars:{
+                    audi:'audi',
+                    ford:'ford',
+                    toyota:'toyota',
+                },
+                name:'ken',
+                num:5
+            }
+        })
+    </script>
+</body>
+</html>

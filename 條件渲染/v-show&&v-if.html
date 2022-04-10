@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show && v-if</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <span v-show="true">n:{{n}}</span>
+        <br>
+        <button @click="n++">click me</button>
+        <br>
+        <span v-if="n === 1"> {{javascript}}</span>
+        <span v-else-if="n === 2"> {{java}}</span>
+        <span v-else-if="n === 3"> {{php}}</span>
+        <span v-else>no</span>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                n:0,
+                javascript:'javascript',
+                java:'java',
+                php:'php'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <input type="text" placeholder="input the value" v-model="inputVal">
+        <ul>
+            <li v-for="employee in employeeFil" :key="employee.id">{{employee.name}} - {{employee.age}}</li>
+        </ul>
+    </div>
+    <script>
+        const vm =  new Vue({
+            el:'#root',
+            data:{
+                inputVal:'',
+                employees:[
+                    {
+                        id:1,
+                        name:'albert',
+                        age:29
+                    },
+                    {
+                        id:2,
+                        name:'brain',
+                        age:39
+                    },
+                    {
+                        id:3,
+                        name:'ken',
+                        age:19
+                    },
+                    {
+                        id:4,
+                        name:'danial',
+                        age:39
+                    },
+                    {
+                        id:5,
+                        name:'joanna',
+                        age:44
+                    },
+                ],
+                employeeFil:[]
+            },
+            watch:{
+                inputVal:{
+                    immediate:true,
+                    handler(value){
+                        this.employeeFil = this.employees.filter((p)=>{
+                            return p.name.indexOf(value) !== -1
+                       })
+                    }
+                }
+            }
+        
+        })
+    </script>
+</body>
+</html>
