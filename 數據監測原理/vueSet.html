@@ -15,6 +15,10 @@
         <span v-if="school.price">price:{{school.price}}</span>
         <br>
         <button @click="addPrice">click me to know the price</button>
+        <ul>
+            <li v-for=" k  in school.students" :key="index">{{k}}</li>
+        </ul>
+        <button @click="changeName">click me</button>
     </div>
     <script>
         const vm = new Vue({
@@ -24,6 +28,7 @@
                     school:{
                         name:'abc school',
                         country:'USA',
+                        students:['john','ken','lisa','sam']
                     }
                 }
             },
@@ -31,6 +36,10 @@
                 addPrice(){
                     // Vue.set(this.school,'price',1200)
                     this.$set(this.school,'price',1200)
+                },
+                changeName(){
+                    // this.school.students.splice(0,1,'albert')
+                    Vue.set(this.school.students,0,'albert')
                 }
             },
         })
