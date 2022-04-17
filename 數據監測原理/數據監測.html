@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數據監測原理</title>
+</head>
+<body>
+    <script>
+        let objs = {
+            name:'albert',
+            address:'9600 Bellaire Blvd. Suite 252'
+        }
+        const obs = new Observer(objs)
+        function Observer(obj){
+            const keys = Object.keys(obj);
+            keys.forEach((k)=>{
+                // console.log(this) , this => obs
+                // console.log(k) , k => name , address
+                Object.defineProperty(this,k,{
+                    get(){
+                        return obj[k]
+                    },
+                    set(val){
+                        console.log(`be changed, the value is  ${val}`)
+                        obj[k] = val
+                    }
+                })
+            })
+        }
+        console.log('obs' , obs)
+    </script>
+</body>
+</html>
