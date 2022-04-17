@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <span>name:{{school.name}}</span>
+        <br>
+        <span>country:{{school.country}}</span>
+        <br>
+        <span v-if="school.price">price:{{school.price}}</span>
+        <br>
+        <button @click="addPrice">click me to know the price</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data() {
+                return {
+                    school:{
+                        name:'abc school',
+                        country:'USA',
+                    }
+                }
+            },
+            methods: {
+                addPrice(){
+                    // Vue.set(this.school,'price',1200)
+                    this.$set(this.school,'price',1200)
+                }
+            },
+        })
+    </script>
+</body>
+</html>
