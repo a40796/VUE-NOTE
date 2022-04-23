@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <form action="">
+            帳號: <input type="text" v-model="account"><br>
+            密碼: <input type="password" v-model="password"><br>
+            性別
+            男<input type="radio" name="sex" v-model="sex" value="mele">
+            女<input type="radio" name="sex" v-model="sex" value="femele"><br>
+            愛好
+            game<input type="checkbox" value="game" v-model="love">
+            sports<input type="checkbox" value="sports" v-model="love">
+            eat<input type="checkbox" value="eat" v-model="love">
+            <br>
+            empolyee
+            <select name="" id="" v-model="employee">
+                <option value="">employee name</option>
+                <option value="albert">albert</option>
+                <option value="john">john</option>
+                <option value="ken">ken</option>
+            </select>
+            <br>
+            <br>
+            輸入訊息
+            <br>
+            <textarea v-model.lazy="info"></textarea>
+            <br>
+            <br>
+            已詳細閱讀
+            <input type="checkbox" v-model="beRead">
+        </form>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data() {
+                return {
+                    account:'',
+                    password:'',
+                    sex:'',
+                    love:[],
+                    employee:'',
+                    info:'',
+                    beRead:''
+                }
+            },
+        })
+    </script>
+</body>
+</html>
