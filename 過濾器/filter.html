@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.1/dayjs.min.js" integrity="sha512-Ot7ArUEhJDU0cwoBNNnWe487kjL5wAOsIYig8llY/l0P2TUFwgsAHVmrZMHsT8NGo+HwkjTJsNErS6QqIkBxDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        TIME:{{time | convertTime}}
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data() {
+                return {
+                    time:1650724121955
+                }
+            },
+            filters:{
+                convertTime(value){
+                    return dayjs(value).format('YYYY-MM-DD HH:mm:ss')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
