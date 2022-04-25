@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-big="n"></div>
+        <div v-big="k"></div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data() {
+                return {
+                    n:20,
+                    k:18
+                }
+            },
+            directives:{
+                big(element,b){
+                    element.innerHTML = b.value * 10;
+                    console.log(element,b)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
