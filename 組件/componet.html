@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <albert>
+        </albert>
+        <john></john>
+        <welcome></welcome>
+    </div>
+    <div id="root2">
+        <welcome></welcome>
+    </div>
+    <script>
+        const welcome = Vue.extend({
+            template:`
+            <div>
+                <span>{{welcome}}</span>
+            </div>
+            `,
+            data() {
+                return {
+                    welcome:'have a good time'
+                }
+            },
+        })
+        const albert = Vue.extend({
+            template:`
+            <div>
+                <span>name:{{name}}</span>
+                <span>age:{{age}}</span>
+            </div>
+            `,
+            data() {
+                return {
+                    name:'albert',
+                    age:29
+                }
+            },
+        })
+        const john = Vue.extend({
+            template:`
+            <div>
+                <span>name:{{name}}</span>
+                <span>age:{{age}}</span>
+            </div>
+            `,
+            data() {
+                return {
+                    name:'john',
+                    age:30
+                }
+            },
+        })
+        Vue.component('welcome',welcome);  // 全局註冊
+        new Vue({
+            el:'#root',
+            components:{  // 局部註冊
+                albert,
+                john
+            }
+        })
+        new Vue({
+            el:'#root2'
+        })
+    
+    </script>
+</body>
+</html>
