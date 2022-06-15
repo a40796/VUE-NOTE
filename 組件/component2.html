@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue  注意事項</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h4>school name: {{name}}</h>
+        <school></school>
+    </div>
+    <script>
+        const school = {
+            name:'mySchool', // 加入name 會影響 vue開發者工具的名稱
+            template:`
+                <div>
+                    <span>school:{{school}}</span>
+                    <br>
+                    <span>name:{{name}}</span>
+                </div>
+            `,
+            data(){
+                return{
+                    school:'abc school',
+                    name:'abc'
+                }
+            }
+        }
+
+        const vm = new Vue({
+            el:'#root',
+            components:{
+                school:school
+            },
+            data(){
+                return{
+                    name:'AMC school'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
