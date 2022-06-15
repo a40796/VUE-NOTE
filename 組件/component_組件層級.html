@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <app></app>
+    </div>
+    <script>
+        const student = {
+            name:'student',
+            template:`
+            <div>
+                <span>{{studentName}}</span>
+            </div>
+            `,
+            data(){
+                return{
+                    studentName:'albert'
+                }
+            }
+        }
+        const school = {
+            name:'mySchool', // 加入name 會影響 vue開發者工具的名稱
+            template:`
+                <div>
+                    <span>school:{{school}}</span>
+                    <br>
+                    <h4>student name:<student><student></h4>
+                    
+                </div>
+            `,
+            data(){
+                return{
+                    school:'abc school',
+                    name:'abc'
+                }
+            },
+            components:{
+                student
+            }
+        }
+
+        const school2 = {
+            name:'newSchool',
+            template:`
+                <div>
+                    <span>school:{{newSchoolName}}</span>
+                </div>
+            `,
+            data() {
+                return {
+                    newSchoolName : 'MRC school'
+                }
+            },
+            
+        }
+
+        const app = {
+            name:'app',
+            template:`
+                <div>
+                    <school></school>
+                    <school2></school2>
+                </div>
+            `,
+            components:{
+                school,
+                school2
+            }
+        }
+
+        const vm = new Vue({
+            el:'#root',
+            components:{
+                app
+            },
+            data(){
+                return{
+                    name:'AMC school'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
