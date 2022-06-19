@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <school></school>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const school = Vue.extend({
+            template:`
+            <div>
+                <div>name:{{name}}</div>
+                <div>address:{{address}}</div>
+            </div>
+            `,
+            data(){
+                return{
+                    name:'ABC school',
+                    address:'ttttttttttt'
+                }
+            }
+        })
+        const vm = new Vue({
+            el:'#root',
+            data(){
+                return{
+
+                }
+            },
+            components:{school}
+        })
+
+        // proof
+        //Vuecomponent.prototype.__proto__ == Vue.prototype
+
+        Vue.prototype.x = 1000;
+        console.log(school.prototype.__proto__.x) // => x = 1000
+
+
+
+    </script>
+</body>
+</html>
